@@ -1,4 +1,4 @@
-# Recommendation-Service
+# Recommendation-Service_cosine_similarity
 В этом проекте реализуем сервис рекомендации фильмов с помощью фреймворка [Streamlit](https://streamlit.io/).
 
 Для построения рекомендательного сервиса фильмов также воспользуемся данными 
