@@ -1,33 +1,34 @@
 import requests
 from typing import Optional, List
 
-
 class OMDBApi:
+    # Инициализация класса с передачей ключа API
+    def init(self, api_key):
+        self.api_key = api_key  # Сохранение ключа API
+        self.url = "https://www.omdbapi.com"  # Базовый URL для API
 
-    def __init__(self, api_key):
-        self.api_key = api_key
-        self.url = "https://www.omdbapi.com"
-
+    # Получение пути к постеру фильма по названию
     def _images_path(self, title: str) -> Optional[str]:
         params = {
-            "apikey": self.api_key,
-            "t": title,
-            "type": "movie"
+            "apikey": self.api_key,  # Передача ключа API в параметры запроса
+            "t": title,  # Название фильма для поиска
+            "type": "movie"  # Тип запроса (фильм)
         }
-        response = requests.get(self.url, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            if 'Poster' in data:
-                return data['Poster']
+        response = requests.get(self.url, params=params)  # Выполнение GET-запроса к API
+        if response.status_code == 200:  # Проверка успешности запроса
+            data = response.json()  # Преобразование ответа в JSON
+            if 'Poster' in data:  # Проверка наличия постера в данных
+                return data['Poster']  # Возврат URL постера
         return None
 
+    # Получение постеров по списку названий фильмов
     def get_posters(self, titles: List[str]) -> List[str]:
-        posters = []
-        for title in titles:
-            path = self._images_path(title)
-            if path: # If image isn`t exist
-                posters.append(path)
+        posters = []  # Список для хранения путей к постерам
+        for title in titles:  # Итерация по названиям фильмов
+            path = self._images_path(title)  # Получение пути к постеру
+            if path:  # Если изображение существует
+                posters.append(path)  # Добавление пути к постеру в список
             else:
-                posters.append('./assets/none.jpeg') # Add plug
+                posters.append('./assets/none.jpeg')  # Добавление изображения-заполнителя, если постера нет
 
         return posters
