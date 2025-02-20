@@ -31,7 +31,7 @@ with st.sidebar:
     st.image(img, width=227) 
 st.sidebar.write(
     """ikoskin@yandex.ru  
-    @i_koskin"""
+       @i_koskin"""
 )
 
 # Заголовок приложения
@@ -49,9 +49,12 @@ st.markdown(
 selected_movie = None  # Инициализируем переменную для выбранного фильма
 
 # Выполняем выбор фильма через селектбокс
+movie = recsys.get_titles()
+unique_movie = sorted(set(movie)) 
+
 selected_movie = selectbox(
     "Введите или выберите название фильма :",
-    recsys.get_titles(),  # Получаем список названий фильмов
+    unique_movie, # Получаем список названий фильмов
     no_selection_label='---'  # Метка при отсутствии выбора
 )
 
@@ -59,16 +62,17 @@ if selected_movie:
     col1, col2 = st.columns([1, 4]) 
     film_id = recsys.get_film_id(selected_movie)  # Получаем ID выбранного фильма
     with col2:  # В правой колонке отображаем информацию о фильме
-        st.markdown("Выбранный фильм : " +
+        st.markdown("<strong>Выбранный фильм :</strong> " +
                     selected_movie + "<br>" +
-                    "Режиссер : " +
+                    "<strong>Режиссер :</strong> " +
                     recsys.get_film_directors(film_id) + "<br>" +
-                    "Жанр : " + ", ".join(recsys.get_film_genres(film_id)) + "<br>" +
-                    "Аннотация : " + recsys.get_film_overview(film_id),
+                    "<strong>Жанр :</strong> " + ", ".join(recsys.get_film_genres(film_id)) + "<br>" +
+                    "<strong>Аннотация :</strong> " + recsys.get_film_overview(film_id),
                     unsafe_allow_html=True)
     with col1:  # В левой колонке отображаем постер фильма
         st.image(omdbapi.get_posters([recsys.get_film_title(film_id)]),
-                 use_column_width=True)
+                 use_container_width=True,
+                )
 
 st.markdown("""---""")  
 
@@ -76,24 +80,43 @@ st.markdown("""---""")
 st.markdown("""По умолчанию поиск ведется по всем фильмам.
             Для ускорения поиска Вы можете выбрать <strong>Режиссёра</strong>, <strong>Год</strong> производства или <strong>Жанр</strong> фильма.""", unsafe_allow_html=True)
 
+
 filter_col = st.columns([1, 1, 1]) 
-with filter_col[0]:  # В первой колонке выбираем режиссера
+
+# Получаем и обрабатываем список режиссеров
+with filter_col[0]:  
+    directors = recsys.get_list_directors()
+    unique_directors = sorted(set(directors))  # Уникальные и отсортированные режиссеры
     selected_director = selectbox(
         "Введите или выберите режиссёра фильма:",
-        recsys.get_list_directors(),  # Получаем список режиссеров
-        no_selection_label='Все режиссёры'  # Метка при отсутствии выбора
+        unique_directors,
+        index=0,
+        no_selection_label= 'Все режиссёры',
+        # format_func=lambda x: x if x else 'Все режиссёры'  # Форматирование отображаемого текста
     )
-with filter_col[1]:  # Во второй колонке выбираем год производства
+
+# Получаем и обрабатываем список годов
+with filter_col[1]:  
+    years = recsys.get_years()
+    unique_years = sorted(set(years), reverse=True)  # Уникальные и отсортированные по убыванию годы
     selected_year = selectbox(
         "Введите или выберите год производства фильма:",
-        recsys.get_years(),  # Получаем список годов
-        no_selection_label='Все года'  # Метка при отсутствии выбора
+        unique_years,
+        index=0,
+        no_selection_label= 'Все года',
+        # format_func=lambda x: x if x else 'Все года'  # Форматирование отображаемого текста
     )
-with filter_col[2]:  # В третьей колонке выбираем жанр
+
+# Получаем и обрабатываем список жанров
+with filter_col[2]:  
+    genres = recsys.get_genres()
+    unique_genres = sorted(set(genres))  # Уникальные и отсортированные жанры
     selected_genre = selectbox(
         "Введите или выберите жанр фильма:",
-        recsys.get_genres(),  # Получаем список жанров
-        no_selection_label='Все жанры'  # Метка при отсутствии выбора
+        unique_genres,
+        index=0,
+        no_selection_label= 'Все жанры',
+        # format_func=lambda x: x if x else 'Все жанры'  # Форматирование отображаемого текста
     )
 
 # Применяем фильтры, если они выбраны
@@ -115,7 +138,7 @@ if st.button('Показать рекомендации'):  # Проверяем
             movies_col = st.columns(TOP_K)  # Создаем колонки для отображения фильмов
             for index in range(min(len(recommended_movie_names), TOP_K)):  # Проходим по рекомендованным фильмам
                 with movies_col[index]:  # В каждой колонке
-                    st.image(recommended_movie_posters[index], use_column_width=True)  # Отображаем постер фильма
+                    st.image(recommended_movie_posters[index], use_container_width=True)  # Отображаем постер фильма
            
             movies_col = st.columns(TOP_K)  # Создаем дополнительные колонки для информации о фильмах
             for index in range(min(len(recommended_movie_names), TOP_K)):  # Проходим по рекомендованным фильмам
@@ -133,4 +156,4 @@ if st.button('Показать рекомендации'):  # Проверяем
                         ", ".join(recsys.get_film_genres(rec_id)) + "</p>",  # Отображаем жанры
                         unsafe_allow_html=True)
     else:
-        st.write('Извините. Выберите сначала фильм.')  # Если фильм не выбран, выводим сообщение
+        st.write('Извините. Выберите сначала фильм.')  # Если фильм не выбран, выводим сообщение  
