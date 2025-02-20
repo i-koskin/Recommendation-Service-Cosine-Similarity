@@ -91,8 +91,7 @@ with filter_col[0]:
         "Введите или выберите режиссёра фильма:",
         unique_directors,
         index=0,
-        no_selection_label= 'Все режиссёры',
-        # format_func=lambda x: x if x else 'Все режиссёры'  # Форматирование отображаемого текста
+        no_selection_label= 'Все режиссёры'
     )
 
 # Получаем и обрабатываем список годов
@@ -103,8 +102,7 @@ with filter_col[1]:
         "Введите или выберите год производства фильма:",
         unique_years,
         index=0,
-        no_selection_label= 'Все года',
-        # format_func=lambda x: x if x else 'Все года'  # Форматирование отображаемого текста
+        no_selection_label= 'Все года'
     )
 
 # Получаем и обрабатываем список жанров
@@ -115,8 +113,7 @@ with filter_col[2]:
         "Введите или выберите жанр фильма:",
         unique_genres,
         index=0,
-        no_selection_label= 'Все жанры',
-        # format_func=lambda x: x if x else 'Все жанры'  # Форматирование отображаемого текста
+        no_selection_label= 'Все жанры'
     )
 
 # Применяем фильтры, если они выбраны
