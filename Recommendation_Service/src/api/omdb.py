@@ -18,6 +18,8 @@ class OMDBApi:
         if response.status_code == 200:  # Проверка успешности запроса
             data = response.json()  # Преобразование ответа в JSON
             if 'Poster' in data:  # Проверка наличия постера в данных
+                if data['Poster'] == 'N/A': # Проверка отсутствия данных постера
+                    return None
                 return data['Poster']  # Возврат URL постера
         return None
 
@@ -28,7 +30,4 @@ class OMDBApi:
             path = self._images_path(title)  # Получение пути к постеру
             if path:  # Если изображение существует
                 posters.append(path)  # Добавление пути к постеру в список
-            else:
-                posters.append('./assets/none.jpeg')  # Добавление изображения-заполнителя, если постера нет
-
-        return posters
+       return posters
