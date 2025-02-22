@@ -30,4 +30,4 @@ class OMDBApi:
             path = self._images_path(title)  # Получение пути к постеру
             if path:  # Если изображение существует
                 posters.append(path)  # Добавление пути к постеру в список
-       return posters
+        return posters
