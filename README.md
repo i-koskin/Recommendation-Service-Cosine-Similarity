@@ -52,7 +52,7 @@ pip install streamlit-extras
 
 #### 1. Скачайте репозиторий в локальную папку
 Для построения рекомендательного сервиса фильмов воспользуемся данными [TMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-#### 2. Скачайте в папку с репозиторием:
+#### 2. Скачайте в папку /Recommendation_Service:
 Общие данные о фильмах [tmdb_5000_movies](https://files.sberdisk.ru/s/te4QbzdxKgsFQXA).
 
 Каст фильмов [tmdb_5000_credits](https://files.sberdisk.ru/s/H9oRuXQt5mFz3T9).
