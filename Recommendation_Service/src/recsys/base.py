@@ -14,7 +14,7 @@ def _load_base(path: str, index_col: str = 'id') -> pd.DataFrame:
 
 class ContentBaseRecSys:
     # Инициализация класса для системы рекомендаций на основе контента
-    def init(self, movies_dataset_filepath: str, distance_filepath: str):
+    def __init__(self, movies_dataset_filepath: str, distance_filepath: str):
         self.distance_1 = _load_base(distance_filepath, index_col='id')  # Загрузка дистанционной матрицы
         # self.distance.index = self.distance.index.astype(int)  
         self.distance_1.columns = self.distance_1.columns.astype(int)  # Приведение названий столбцов к типу int
