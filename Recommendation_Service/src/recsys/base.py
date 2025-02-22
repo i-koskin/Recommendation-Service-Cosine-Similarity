@@ -78,7 +78,7 @@ class ContentBaseRecSys:
    
     def set_filter(self, director: str, year: int, genre: str) -> None:
         # Установка фильтров для данных о фильмах
-        self.movies = self.movies_1  в
+        self.movies = self.movies_1
         if director: 
             self.movies = self.movies.loc[self.movies.director == director]  # Фильтрация по режиссеру
         if year:  
