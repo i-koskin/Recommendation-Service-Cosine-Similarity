@@ -52,10 +52,10 @@ pip install streamlit-extras
 
 #### 1. Скачайте репозиторий в локальную папку
 Для построения рекомендательного сервиса фильмов воспользуемся данными [TMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-#### 2. Скачайте в папку /Recommendation_Service:
-Общие данные о фильмах [tmdb_5000_movies](https://files.sberdisk.ru/s/te4QbzdxKgsFQXA).
+#### 2. Скачайте и переместите в папку /Recommendation_Service:
+2.1. Общие данные о фильмах [tmdb_5000_movies](https://files.sberdisk.ru/s/te4QbzdxKgsFQXA).
 
-Каст фильмов [tmdb_5000_credits](https://files.sberdisk.ru/s/H9oRuXQt5mFz3T9).
+2.2. Каст фильмов [tmdb_5000_credits](https://files.sberdisk.ru/s/H9oRuXQt5mFz3T9).
 #### 3. Для подготовки данных запустите на выполнение все ячейки в файле distances.ipynb
 
 Файл distances.ipynb находится  в папке /Recommendation_Service/src/notebooks
