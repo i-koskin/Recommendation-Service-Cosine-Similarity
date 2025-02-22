@@ -77,8 +77,8 @@ if selected_movie:
 st.markdown("""---""")  
 
 # Информация о фильтрах поиска
-st.markdown("""По умолчанию поиск ведется по всем фильмам.
-            Для ускорения поиска Вы можете выбрать <strong>Режиссёра</strong>, <strong>Год</strong> производства или <strong>Жанр</strong> фильма.""", unsafe_allow_html=True)
+st.markdown("""По умолчанию поиск ведется по всем категориям.
+            Для уточнения Вы можете выбрать <strong>Режиссёра</strong>, <strong>Год</strong> производства или <strong>Жанр</strong> фильма.""", unsafe_allow_html=True)
 
 
 filter_col = st.columns([1, 1, 1]) 
