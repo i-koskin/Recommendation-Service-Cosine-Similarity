@@ -3,7 +3,7 @@ from typing import Optional, List
 
 class OMDBApi:
     # Инициализация класса с передачей ключа API
-    def init(self, api_key):
+    def __init__(self, api_key):
         self.api_key = api_key  # Сохранение ключа API
         self.url = "https://www.omdbapi.com"  # Базовый URL для API
 
