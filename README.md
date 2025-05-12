@@ -41,8 +41,8 @@ cd Recommendation-Service-Cosine-Similarity
 
 Скачайте и поместите в папку `./Recommendation_Service` следующие файлы:
 
-- `tmdb_5000_movies.csv` — общая информация о фильмах
-- `tmdb_5000_credits.csv` — информация о касте фильмов
+- [tmdb_5000_movies.csv](https://files.sberdisk.ru/s/te4QbzdxKgsFQXA) — общая информация о фильмах
+- [tmdb_5000_credits.csv](https://files.sberdisk.ru/s/H9oRuXQt5mFz3T9) — информация о касте фильмов
 
 ### 3. Подготовка данных
 
