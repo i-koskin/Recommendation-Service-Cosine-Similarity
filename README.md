@@ -28,10 +28,18 @@
 pip install streamlit
 pip install streamlit-extras
 ```
+### 2. Клонирование репозитория
+
+Скачайте репозиторий в локальную директорию:
+
+```bash
+git clone https://github.com/i-koskin/Recommendation-Service-Cosine-Similarity.git
+cd Recommendation-Service-Cosine-Similarity
+```
 
 ### 2. Скачивание и подготовка данных
 
-Скачайте и поместите в папку `/Recommendation_Service` следующие файлы:
+Скачайте и поместите в папку `./Recommendation-Service-Cosine-Similarity` следующие файлы:
 
 - `tmdb_5000_movies.csv` — общая информация о фильмах
 - `tmdb_5000_credits.csv` — информация о касте фильмов
@@ -41,12 +49,12 @@ pip install streamlit-extras
 Откройте и выполните все ячейки ноутбука `distances.ipynb`, расположенного по пути:
 
 ```
-/Recommendation_Service/src/notebooks/distances.ipynb
+./Recommendation-Service-Cosine-Similarity/src/notebooks/distances.ipynb
 ```
 
 ### 4. Настройка переменных окружения
 
-Создайте файл `.env` в папке `/Recommendation_Service/src` с содержимым:
+Создайте файл `.env` в папке `./Recommendation-Service-Cosine-Similarity/src` с содержимым:
 
 ```
 API_KEY=ваш_ключ_OMDb
@@ -59,7 +67,7 @@ API_KEY=ваш_ключ_OMDb
 В терминале:
 
 ```bash
-cd /Recommendation_Service/src
+cd /Recommendation-Service-Cosine-Similarity/src
 streamlit run app.py
 ```
 
