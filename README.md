@@ -39,7 +39,7 @@ cd Recommendation-Service-Cosine-Similarity
 
 ### 2. Скачивание и подготовка данных
 
-Скачайте и поместите в папку `./Recommendation-Service-Cosine-Similarity` следующие файлы:
+Скачайте и поместите в папку `./Recommendation_Service` следующие файлы:
 
 - `tmdb_5000_movies.csv` — общая информация о фильмах
 - `tmdb_5000_credits.csv` — информация о касте фильмов
@@ -49,12 +49,12 @@ cd Recommendation-Service-Cosine-Similarity
 Откройте и выполните все ячейки ноутбука `distances.ipynb`, расположенного по пути:
 
 ```
-./Recommendation-Service-Cosine-Similarity/src/notebooks/distances.ipynb
+./Recommendation_Service/src/notebooks/distances.ipynb
 ```
 
 ### 4. Настройка переменных окружения
 
-Создайте файл `.env` в папке `./Recommendation-Service-Cosine-Similarity/src` с содержимым:
+Создайте файл `.env` в папке `./Recommendation_Service/src` с содержимым:
 
 ```
 API_KEY=ваш_ключ_OMDb
@@ -67,7 +67,7 @@ API_KEY=ваш_ключ_OMDb
 В терминале:
 
 ```bash
-cd /Recommendation-Service-Cosine-Similarity/src
+cd ./Recommendation_Service/src
 streamlit run app.py
 ```
 
